@@ -1,0 +1,57 @@
+<br />
+<h3>
+  Users
+</h3>
+<br />
+<div class="col-md-12  col-centered">
+  <button class="btn btn-success" (click)="add()">Add New User</button>
+</div>
+<br/>
+<div class="col-md-12 col-centered">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>IsActive</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; let i=index;"
+        [ngStyle]="{'background-color': !user.isActive? '#f1d3d5' : 'none' }">
+
+        <td>{{user.userId}}</td>
+        <td>
+          <span *ngIf="user.userId!==editRowId">{{user.userName}}</span>
+          <input type="text" [(ngModel)]="user.userName" *ngIf="user.userId===editRowId" class="form-control" required />
+        </td>
+        <td>
+            <span *ngIf="user.userId!==editRowId">****</span>
+            <input type="password" [(ngModel)]="user.password" *ngIf="user.userId===editRowId" class="form-control" required />
+          </td>
+        <td>
+          <span *ngIf="user.userId!==editRowId">{{user.firstName}}</span>
+          <input type="text" [(ngModel)]="user.firstName" *ngIf="user.userId===editRowId" class="form-control" required />
+        </td>
+        <td>
+          <span *ngIf="user.userId!==editRowId">{{user.lastName}}</span>
+          <input type="text" [(ngModel)]="user.lastName" *ngIf="user.userId===editRowId" class="form-control" required />
+        </td>
+        <td>{{user.isActive}}</td>
+        <td *ngIf="user.isActive">
+          <button *ngIf="user.userId!==editRowId" class="btn btn-danger" (click)="deleteUser(user)">Delete</button>
+          <button *ngIf="user.userId!==editRowId" class="btn btn-primary" (click)="edit(user.userId)"
+            style="margin-left: 20px;"> Edit</button>
+          <button *ngIf="user.userId===editRowId" class="btn btn-success" (click)="save(user)"
+            style="margin-left: 20px;">Save</button>
+          <button *ngIf="user.userId===editRowId" class="btn btn-default" (click)="cancel()"
+            style="margin-left: 20px;">Cancel</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

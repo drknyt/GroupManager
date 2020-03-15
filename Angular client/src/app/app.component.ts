@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ApiService } from './api.service';
+import { JwtHelper } from 'angular2-jwt';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,18 +8,28 @@ import { ApiService } from './api.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'GroupClient';
-  users = [];
+  title = 'my-app';
+  userName = "";
 
-  constructor(private apiService: ApiService) {}
-
-  getUsers() {
-    this.apiService.getUsers().subscribe(
-      res => {
-        this.users = res;
-        console.log(res);
-      }
-    )
+  constructor(private jwtHelper: JwtHelper, private router: Router) {
   }
 
+  isUserAuthenticated() {
+    let token: string = localStorage.getItem("jwt");
+    let fullName: string = localStorage.getItem("jwt_fullName");
+    
+    if (token && !this.jwtHelper.isTokenExpired(token)) {
+      this.userName = fullName;
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  logOut() {
+    localStorage.removeItem("jwt");
+    this.router.navigate(["/"]);
  }
+
+}
