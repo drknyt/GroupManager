@@ -1,0 +1,10 @@
+
+<button (click)="getUsers()">Get Users</button>
+
+<ul>
+  <li *ngFor="let user of users">
+    {{ user.firstName }}
+  </li>
+</ul>
+
+<router-outlet></router-outlet>
