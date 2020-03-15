@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  crud.usermanagment.api:
+    image: ${DOCKER_REGISTRY-}crudusermanagmentapi
+    build:
+      context: .
+      dockerfile: CRUD.UserManagement.API/Dockerfile
+    links:
+      - mysql
+
+  mysql:
+    container_name: ${MYSQL_SERVER_NAME}
+    image: mysql/mysql-server:5.7
+    restart: always
+    volumes:
+      - dbvol:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    env_file:
+      - secrets.env
+
+volumes:
+  appbuild:
+  dbvol:
