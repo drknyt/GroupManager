@@ -5,10 +5,10 @@ services:
     image: crudusermanagmentapi
     build:
       context: .
-      dockerfile: .NET Api/CRUD.UserManagement.API/Dockerfile
+      dockerfile: "../.NET Api/CRUD.UserManagement.API/Dockerfile"
     ports:
       - "80"
-      - "8000:80"
+      - "5000:80"
     depends_on:
       - mysql
 
@@ -19,10 +19,16 @@ services:
     volumes:
       - dbvol:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
     env_file:
       - secrets.env
 
+  angular: # name of the first service
+    build: "../Angular client"
+    volumes: # Volume binding
+        - '../Angular client:/usr/src/app' 
+    ports:
+      - "4200:4200" # specify port forewarding
+
 volumes:
-  appbuild:
   dbvol:

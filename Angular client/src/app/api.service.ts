@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  apiUrl = 'http://localhost:55503/api/users';
-  token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODQyODUxNTV9.CitT1zY8KT67EMXY27FgeOtPFa0VxvXnTQ4HilqcI-E';
+  apiUrl = 'http://localhost:5000/api/users';
+  token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODQ4ODg4ODh9.1XDf_7FIwZqHetEs5nvX2ZkjdKSDtSjGYLOOOTfIpFU';
 
   constructor(private http: HttpClient) { }
 
