@@ -4,8 +4,8 @@ services:
   crud.usermanagment.api:
     image: crudusermanagmentapi
     build:
-      context: .
-      dockerfile: "../.NET Api/CRUD.UserManagement.API/Dockerfile"
+      context: ../.NET Api
+      dockerfile: ./CRUD.UserManagement.API/Dockerfile
     ports:
       - "80"
       - "5000:80"
