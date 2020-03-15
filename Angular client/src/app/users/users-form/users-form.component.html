@@ -1,0 +1,54 @@
+<br />
+<h3>
+  Signup
+</h3>
+<br />
+
+<div class="col-md-12 col-centered">
+
+  <form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" novalidate>
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #title="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && model.firstName.invalid }" required />
+      <div *ngIf="f.submitted && model.firstName.invalid" class="invalid-feedback">
+        <div *ngIf="model.firstName.errors.required">First Name is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #title="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && model.lastName.invalid }" required />
+      <div *ngIf="f.submitted && model.lastName.invalid" class="invalid-feedback">
+        <div *ngIf="model.lastName.errors.required">Last Name is required</div>
+      </div>
+    </div>
+
+    
+    <div class="form-group">
+      <label for="userName">Username</label>
+      <input type="text" class="form-control" name="userName" [(ngModel)]="model.userName" #title="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && model.userName.invalid }" required />
+      <div *ngIf="f.submitted && model.userName.invalid" class="invalid-feedback">
+        <div *ngIf="model.userName.errors.required">Username is required</div>
+      </div>
+    </div>
+
+    
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #title="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && model.password.invalid }" required />
+      <div *ngIf="f.submitted && model.password.invalid" class="invalid-feedback">
+        <div *ngIf="model.password.errors.required">password is required</div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <input type="submit" class="btn btn-primary" value="Save" />
+    </div>
+  </form>
+
+</div>

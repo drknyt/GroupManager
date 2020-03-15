@@ -1,0 +1,46 @@
+<br />
+<h3>
+  My Favourite Movie
+</h3>
+<br />
+
+<div class="col-md-4">
+
+  <select class="form-control" [(ngModel)]="selectedValue">
+    <option *ngFor="let group of allmovies" value={{group.groupId}}>
+      {{movie.title}}
+    </option>
+  </select><br />
+  <button class="btn btn-success" (click)="add()">Add New Favourite Movie</button>
+
+</div>
+<br />
+<div class="col-md-12 col-centered">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Description</th>
+
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let movie of movies; let i=index;">
+
+        <td>{{movie.movieId}}</td>
+        <td>
+          <span>{{movie.title}}</span>
+        </td>
+        <td>
+          <span>{{movie.description}}</span>
+        </td>
+
+        <td>
+          <button class="btn btn-danger" (click)="delete(movie)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

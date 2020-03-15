@@ -1,0 +1,33 @@
+<br />
+<h3>
+  Groups
+</h3>
+<br />
+
+<div class="col-md-12 col-centered">
+
+  <form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" novalidate>
+    <div class="form-group">
+      <label for="Title">Title</label>
+      <input type="text" class="form-control" name="title" [(ngModel)]="model.title" #title="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && title.invalid }" required />
+      <div *ngIf="f.submitted && title.invalid" class="invalid-feedback">
+        <div *ngIf="title.errors.required">Title is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="Description">Description</label>
+      <textarea cols="10" rows="5" class="form-control" name="description" [(ngModel)]="model.description"
+        #description="ngModel" [ngClass]="{ 'is-invalid': f.submitted && description.invalid }" required></textarea>
+      <div *ngIf="f.submitted && description.invalid" class="invalid-feedback">
+        <div *ngIf="description.errors.required">Description is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-primary">Save</button>
+    </div>
+  </form>
+
+</div>

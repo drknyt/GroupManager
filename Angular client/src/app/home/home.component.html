@@ -1,0 +1,17 @@
+<br />
+<div *ngIf="isUserAuthenticated()" style="color:blue;">
+  <h4>
+    Welcome to User Management Home Page
+  </h4>
+</div>
+
+<div *ngIf="!isUserAuthenticated()">
+
+  <div style="margin: auto;width: 60%;">
+    <h4 style="display: inline;"> Welcome to User Management</h4>
+    <h5 style="display: inline;">
+      <a style="display: inline;" class="nav-link" routerLink="login"> Login </a>  or <a style="display: inline;" class="nav-link" routerLink="users-form/:0">Sign Up</a> to start
+    </h5>
+  </div>
+
+</div>
