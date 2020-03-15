@@ -26,7 +26,7 @@ services:
   angular: # name of the first service
     build: "../Angular client"
     volumes: # Volume binding
-        - '../Angular client:/usr/src/app' 
+      - '../Angular client:/usr/src/app' 
     ports:
       - "4200:4200" # specify port forewarding
 
