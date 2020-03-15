@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: CRUD.UserManagement.API/Dockerfile
+    ports:
+      - "8000:80"
     links:
       - mysql
 
