@@ -2,13 +2,14 @@ version: '3.4'
 
 services:
   crud.usermanagment.api:
-    image: ${DOCKER_REGISTRY-}crudusermanagmentapi
+    image: crudusermanagmentapi
     build:
       context: .
-      dockerfile: CRUD.UserManagement.API/Dockerfile
+      dockerfile: .NET Api/CRUD.UserManagement.API/Dockerfile
     ports:
+      - "80"
       - "8000:80"
-    links:
+    depends_on:
       - mysql
 
   mysql:
